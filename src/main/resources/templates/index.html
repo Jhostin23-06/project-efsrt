@@ -8,149 +8,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <style>
-        :root {
-            --primary-color: #000000; /* Negro */
-            --secondary-color: #fbfbfb; /* Blanco suave */
-            --accent-color: #f8e1e7; /* Palo rosa */
-            --text-color: #2c2c2c; /* Gris oscuro */
-            --hover-color: #e0dcdc; /* Gris claro para hover */
-        }
-
-        body {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-        }
-
-        .navbar {
-            background-color: var(--primary-color) !important;
-        }
-
-        .navbar-brand, .nav-link {
-            color: var(--secondary-color) !important;
-        }
-
-        .dropdown-menu {
-            background-color: var(--secondary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .dropdown-item {
-            color: var(--text-color) !important;
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--accent-color) !important;
-            color: var(--primary-color) !important;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        .btn-primary {
-            background-color: red;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #b50d0d;
-            color: white;
-        }
-
-        .btn-danger {
-            background-color: #ff4d4d;
-            border-color: #ff0000;
-        }
-
-        .btn-danger:hover {
-            background-color: #cc0000;
-            border-color: #990000;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #f8e1e7, #e0dcdc);
-            padding: 3rem 1rem;
-            text-align: center;
-            border-radius: 10px;
-            margin: 2rem auto;
-        }
-
-        .hero-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Tienda de Peliculas</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="mantenimientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mantenimientos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="mantenimientosDropdown">
-                        <li><a class="dropdown-item" th:href="@{/clientes}">Clientes</a></li>
-                        <li><a class="dropdown-item" th:href="@{/empleados}">Empleados</a></li>
-                        <li><a class="dropdown-item" th:href="@{/peliculas}">Películas</a></li>
-                        <li><a class="dropdown-item" th:href="@{/actores}">Actores</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="consultasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Consultas
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="consultasDropdown">
-                        <li><a class="dropdown-item" th:href="@{/consultas/genero}">Buscar películas por género</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reportesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Reportes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="reportesDropdown">
-                        <li><a class="dropdown-item" th:href="@{/reportes/alquileres}">Reporte Alquileres</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="alquilerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Alquiler
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="alquilerDropdown">
-                        <li><a class="dropdown-item" th:href="@{/alquileres}">Registrar Alquiler</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <a th:href="@{/logout}" class="btn btn-danger">Cerrar Sesión</a>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- Hero Section -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="display-4">Bienvenido a la Gestión de Clientes</h1>
+            <p class="lead">Administra y mantén actualizada la información de nuestros clientes de manera eficiente.</p>
+            <a th:href="@{/clientes}" class="btn btn-primary btn-lg">Gestionar Clientes</a>
+            <a th:href="@{/empleados}" class="btn btn-secondary btn-lg">Gestionar Empleados</a>
         </div>
     </div>
-</nav>
+</div>
 
-<div class="container mt-4">
-    <div class="hero-section">
-        <h2>Explora el Mejor Catálogo de Películas</h2>
-        <p>Disfruta de nuestra selección cuidadosamente curada de las mejores películas de todos los géneros. ¡Encuentra tu próxima película favorita hoy mismo!</p>
-        <a th:href="@{/peliculas}" class="btn btn-primary">Ver Películas</a>
+<!-- Features Section -->
+<div class="container mt-5">
+    <div class="row d-flex">
+        <div class="col-md-4 text-center">
+            <img src="/img/customers.webp" alt="Clientes" class="img-fluid mb-3 w-25">
+            <h3>Clientes</h3>
+            <p>Accede a la lista completa de clientes y realiza búsquedas rápidas.</p>
+            <a th:href="@{/clientes}" class="btn btn-outline-primary">Ver Clientes</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/img/employees.webp" alt="Empleados" class="img-fluid mb-3 w-25">
+            <h3>Empleados</h3>
+            <p>Gestiona la información de los empleados de la tienda.</p>
+            <a th:href="@{/empleados}" class="btn btn-outline-secondary">Ver Empleados</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/img/reports.webp" alt="Reportes" class="img-fluid mb-3 w-25">
+            <h3>Reportes</h3>
+            <p>Genera reportes detallados sobre las actividades de la tienda.</p>
+            <a th:href="@{/reportes}" class="btn btn-outline-success">Ver Reportes</a>
+        </div>
     </div>
 </div>
 

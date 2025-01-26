@@ -1,0 +1,85 @@
+:root {
+    --primary-color: #000000; /* Negro */
+    --secondary-color: #fbfbfb; /* Blanco suave */
+    --accent-color: #f8e1e7; /* Palo rosa */
+    --text-color: #2c2c2c; /* Gris oscuro */
+    --hover-color: #e0dcdc; /* Gris claro para hover */
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--secondary-color) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.dropdown-item {
+    color: var(--text-color) !important;
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--primary-color) !important;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: red;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #b50d0d;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    border-color: #ff0000;
+}
+
+.btn-danger:hover {
+    background-color: #cc0000;
+    border-color: #990000;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #f8e1e7, #e0dcdc);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 2rem auto;
+}
+
+.hero-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+}

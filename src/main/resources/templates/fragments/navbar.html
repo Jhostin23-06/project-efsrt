@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Tienda de Peliculas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="mantenimientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mantenimientos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="mantenimientosDropdown">
+                        <li><a class="dropdown-item" th:href="@{/clientes}">Clientes</a></li>
+                        <li><a class="dropdown-item" th:href="@{/empleados}">Empleados</a></li>
+                        <li><a class="dropdown-item" th:href="@{/peliculas}">Peliculas</a></li>
+                        <li><a class="dropdown-item" th:href="@{/actores}">Actores</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="consultasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Consultas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="consultasDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#" id="searchByGenre" style="text-decoration: none; color: black;">
+                                <form th:action="@{/genpel}" method="get" style="display: inline;">
+                                    <input type="hidden" name="tipo" value="listGenero">
+                                    <button type="submit" class="btn btn-link" style="text-decoration: none; color: black;">Buscar películas por género</button>
+                                </form>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="reportesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reportes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="reportesDropdown">
+                        <li><a class="dropdown-item" th:href="@{/alquileres}">Reporte Alquileres</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="alquilerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Alquiler
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="alquilerDropdown">
+                        <li><a class="dropdown-item" th:href="@{/alquileres/registrar}">Registrar Alquiler</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a th:href="@{/logout}" class="btn btn-danger">Cerrar Sesión</a>
+        </div>
+    </div>
+</nav>
