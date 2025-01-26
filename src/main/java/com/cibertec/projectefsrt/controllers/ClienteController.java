@@ -35,10 +35,9 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public String obtenerCliente(@PathVariable Integer id, Model model){
-        Cliente cliente = clienteService.findById(id).orElse(null);
-        model.addAttribute("cliente", cliente);
-        return "cliente-detalle";
+    @ResponseBody
+    public Cliente obtenerCliente(@PathVariable Integer id){
+        return clienteService.findById(id).orElse(null);
     }
 
     @PostMapping("/editar")
