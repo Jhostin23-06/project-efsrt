@@ -7,11 +7,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClienteRepository  extends JpaRepository<Cliente, Integer> {
 
-    @Query("SELECT c FROM Cliente c WHERE c.nomCliente LIKE %:query% OR c.codCliente LIKE %:query%")
-    List<Cliente> searchClientes(@Param("query") String query);
+    List<Cliente> findByEstadoCliAndNomClienteContaining(int estado, String nombre);
 
+    Optional<Cliente> findTopByOrderByCodClienteDesc();
+
+    List<Cliente> findByEstadoCli(int estado);
 }

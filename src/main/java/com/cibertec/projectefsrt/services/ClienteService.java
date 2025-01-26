@@ -30,7 +30,23 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
-    public List<Cliente> buscarClientes(String query){
-        return clienteRepository.searchClientes(query);
+    public List<Cliente> buscarClientesActivos(String query){
+        return clienteRepository.findByEstadoCliAndNomClienteContaining(1,query);
     }
+
+    public String generarSigCodCliente(){
+        Optional<Cliente> ultimoCliente = clienteRepository.findTopByOrderByCodClienteDesc();
+        if (ultimoCliente.isPresent()) {
+            String ultimoCodigo = ultimoCliente.get().getCodCliente();
+            int numero = Integer.parseInt(ultimoCodigo.substring(1)) + 1;
+            return "C" + String.format("%04d", numero);
+        } else {
+            return "C0001";
+        }
+    }
+
+    public List<Cliente> findAllActive(){
+        return clienteRepository.findByEstadoCli(1);
+    }
+
 }

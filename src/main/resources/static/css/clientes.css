@@ -49,12 +49,13 @@ footer {
 }
 
 .btn-primary {
-    background-color: var(--accent-color);
+    background-color: lightskyblue;
+    color: black;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: var(--hover-color);
+    background-color: #5ac3fd;
     color: var(--primary-color);
 }
 
