@@ -70,9 +70,8 @@
     </div>
 </div>
 <br><br><br>
-<footer>
-    <p class="mt-2">&copy; <span th:text="${#dates.format(new java.util.Date(), 'yyyy')}"></span> Cibertec. Todos los derechos reservados.</p>
-</footer>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- Modal -->
 <div class="modal fade mt-5" id="registrarClienteModal" tabindex="-1" aria-labelledby="registrarClienteModalLabel" aria-hidden="true">
