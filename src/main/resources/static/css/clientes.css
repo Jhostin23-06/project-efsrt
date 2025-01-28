@@ -18,6 +18,11 @@ body {
     color: var(--text-color);
 }
 
+h1 {
+    color: var(--highlight-color);
+    text-shadow: 1px 1.5px 3px var(--primary-color);
+}
+
 .navbar {
     background-color: var(--primary-color) !important;
 }
@@ -72,4 +77,8 @@ footer {
 table {
     background-color: var(--secondary-color);
     border-radius: 5px;
+}
+
+table th, table td {
+    text-align: center;
 }

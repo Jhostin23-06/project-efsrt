@@ -11,6 +11,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Table(name = "pelicula", schema = "bd_peliculas")
 public class Pelicula {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pelicula", nullable = false)
     private Integer id;
 
@@ -35,6 +36,6 @@ public class Pelicula {
 
     @ColumnDefault("1")
     @Column(name = "estado_pel", nullable = false)
-    private Integer estadoPel;
+    private Integer estadoPel = 1;
 
 }

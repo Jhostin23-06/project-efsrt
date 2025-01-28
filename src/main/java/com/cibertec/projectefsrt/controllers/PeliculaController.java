@@ -1,6 +1,8 @@
 package com.cibertec.projectefsrt.controllers;
 
+import com.cibertec.projectefsrt.entities.Genero;
 import com.cibertec.projectefsrt.entities.Pelicula;
+import com.cibertec.projectefsrt.services.GeneroService;
 import com.cibertec.projectefsrt.services.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class PeliculaController {
 
     @Autowired
     private PeliculaService peliculaService;
+    @Autowired
+    private GeneroService generoService;
 
     @GetMapping("generarCodigo")
     @ResponseBody
@@ -50,7 +54,9 @@ public class PeliculaController {
     }
 
     @PostMapping
-    public String registrarPelicula(Pelicula pelicula){
+    public String registrarPelicula(@RequestParam String nomGenero, Pelicula pelicula){
+        Genero genero = generoService.findByName(nomGenero);
+        pelicula.setIdGenero(genero);
         peliculaService.guardarPelicula(pelicula);
         return "redirect:/peliculas";
     }

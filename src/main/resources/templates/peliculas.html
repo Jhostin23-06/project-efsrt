@@ -75,7 +75,7 @@
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- Modal -->
-<div class="modal fade mt-5" id="registrarPeliculaModal" tabindex="-1" aria-labelledby="registrarPeliculaModalLabel" aria-hidden="true">
+<div class="modal fade mt-4" id="registrarPeliculaModal" tabindex="-1" aria-labelledby="registrarPeliculaModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,7 +94,7 @@
           </div>
           <div class="form-group">
             <label for="genero">Género</label>
-            <input class="form-control mb-3" type="text" name="idGenero" id="genero" >
+            <input class="form-control mb-3" type="text" name="nomGenero" id="genero" >
           </div>
           <div class="form-group">
             <label for="duracion">Duración</label>
@@ -109,7 +109,7 @@
             <input class="form-control mb-3" type="text" name="copias" id="copias" >
           </div>
           <br>
-          <div class="d-flex justify-content-between mt-3">
+          <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Registrar</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           </div>
@@ -120,7 +120,7 @@
 </div>
 
 <!-- Modal para editar película -->
-<div class="modal fade mt-5" id="editarPeliculaModal" tabindex="-1" aria-labelledby="editarPeliculaModalLabel" aria-hidden="true">
+<div class="modal fade mt-4" id="editarPeliculaModal" tabindex="-1" aria-labelledby="editarPeliculaModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -152,10 +152,10 @@
           </div>
           <div class="form-group">
             <label for="editarCopias">Copias</label>
-            <input class="form-control mb-3" type="text" name="copias" id="editarCopias">
+            <input class="form-control mb-2" type="text" name="copias" id="editarCopias">
           </div>
           <br>
-          <div class="d-flex justify-content-between mt-3">
+          <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           </div>

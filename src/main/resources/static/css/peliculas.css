@@ -5,7 +5,7 @@
     --text-color: #2c2c2c; /* Dark gray */
     --hover-color: #e0dcdc; /* Light gray for hover */
     --border-color: #cccccc; /* Light gray for borders */
-    --highlight-color: #d1e7dd; /* Light green for highlights */
+    --highlight-color: #626a62; /* Light green for highlights */
 }
 
 body, html {
@@ -18,7 +18,6 @@ body, html {
 body {
     background-color: var(--secondary-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
 }
 
 .navbar {
@@ -124,7 +123,7 @@ footer {
 /* Additional styles for differentiation */
 h1 {
     color: var(--highlight-color);
-    text-shadow: 1px 1px 2px var(--primary-color);
+    text-shadow: 1px 1.5px 3px var(--primary-color);
 }
 
 .table th, .table td {
