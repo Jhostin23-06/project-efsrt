@@ -74,120 +74,15 @@
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 
-<!-- Modal -->
-<div class="modal fade mt-4" id="registrarPeliculaModal" tabindex="-1" aria-labelledby="registrarPeliculaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="registrarPeliculaModalLabel">Registrar Película</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form th:action="@{/peliculas}" method="post" id="peliculaForm" onsubmit="return registrarPelicula(event);" novalidate>
-          <div class="form-group">
-            <label for="codigo">Código</label>
-            <input class="form-control mb-3" type="text" name="codPelicula" id="codigo" readonly>
-          </div>
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input class="form-control mb-3" type="text" name="nomPelicula" id="nombre" >
-          </div>
-          <div class="form-group">
-            <label for="genero">Género</label>
-            <input class="form-control mb-3" type="text" name="nomGenero" id="genero" >
-          </div>
-          <div class="form-group">
-            <label for="duracion">Duración</label>
-            <input class="form-control mb-3" type="text" name="duracion" id="duracion" >
-          </div>
-          <div class="form-group">
-            <label for="anio">Año</label>
-            <input class="form-control mb-3" type="text" name="anio" id="anio" >
-          </div>
-          <div class="form-group">
-            <label for="copias">Copias</label>
-            <input class="form-control mb-3" type="text" name="copias" id="copias" >
-          </div>
-          <br>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Registrar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modal para registrar película -->
+<div th:replace="~{fragments/peliculasModal/registro_modal :: registroModal}"></div>
 
 <!-- Modal para editar película -->
-<div class="modal fade mt-4" id="editarPeliculaModal" tabindex="-1" aria-labelledby="editarPeliculaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editarPeliculaModalLabel">Editar Película</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form th:action="@{/peliculas/editar}" method="post" id="editarPeliculaForm" onsubmit="return editarPelicula(event);" novalidate>
-          <input type="hidden" name="id" id="editarId">
-          <div class="form-group">
-            <label for="editarCodigo">Código</label>
-            <input class="form-control mb-3" type="text" name="codPelicula" id="editarCodigo">
-          </div>
-          <div class="form-group">
-            <label for="editarNombre">Nombre</label>
-            <input class="form-control mb-3" type="text" name="nomPelicula" id="editarNombre">
-          </div>
-          <div class="form-group">
-            <label for="editarGenero">Género</label>
-            <input class="form-control mb-3" type="text" name="idGenero" id="editarGenero">
-          </div>
-          <div class="form-group">
-            <label for="editarDuracion">Duración</label>
-            <input class="form-control mb-3" type="text" name="duracion" id="editarDuracion">
-          </div>
-          <div class="form-group">
-            <label for="editarAnio">Año</label>
-            <input class="form-control mb-3" type="text" name="anio" id="editarAnio">
-          </div>
-          <div class="form-group">
-            <label for="editarCopias">Copias</label>
-            <input class="form-control mb-2" type="text" name="copias" id="editarCopias">
-          </div>
-          <br>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<div th:replace="~{fragments/peliculasModal/editar_modal :: editarModal}"></div>
 
-<!-- Modal para información de la película -->
-<div class="modal fade mt-5" id="infoPeliculaModal" tabindex="-1" aria-labelledby="infoPeliculaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="infoPeliculaModalLabel">Información de la Película</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>ID:</strong> <span id="infoId"></span></p>
-        <p><strong>Código:</strong> <span id="infoCodigo"></span></p>
-        <p><strong>Nombre:</strong> <span id="infoNombre"></span></p>
-        <p><strong>Género:</strong> <span id="infoGenero"></span></p>
-        <p><strong>Duración:</strong> <span id="infoDuracion"></span></p>
-        <p><strong>Año:</strong> <span id="infoAnio"></span></p>
-        <p><strong>Copias:</strong> <span id="infoCopias"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modal para ver detalles de la película -->
+<div th:replace="~{fragments/peliculasModal/info_modal :: infoModal}"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
 <script src="/js/peliculas.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

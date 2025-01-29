@@ -5,7 +5,7 @@
     --text-color: #2c2c2c; /* Dark gray */
     --hover-color: #e0dcdc; /* Light gray for hover */
     --border-color: #cccccc; /* Light gray for borders */
-    --highlight-color: #626a62; /* Light green for highlights */
+    --highlight-color: #333333; /* Light green for highlights */
 }
 
 body, html {
@@ -123,7 +123,7 @@ footer {
 /* Additional styles for differentiation */
 h1 {
     color: var(--highlight-color);
-    text-shadow: 1px 1.5px 3px var(--primary-color);
+    text-shadow: 1px 1.5px 2.5px var(--primary-color);
 }
 
 .table th, .table td {

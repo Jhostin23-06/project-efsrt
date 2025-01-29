@@ -1,0 +1,45 @@
+<!-- Modal para editar película -->
+<div class="modal fade mt-5"  id="editarPeliculaModal" th:fragment="editarModal" tabindex="-1" aria-labelledby="editarPeliculaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarPeliculaModalLabel">Editar Película</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/peliculas/editar}" method="post" id="editarPeliculaForm" onsubmit="return editarPelicula(event);" novalidate>
+                    <input type="hidden" name="id" id="editarId">
+                    <div class="form-group">
+                        <label for="editarCodigo">Código</label>
+                        <input class="form-control mb-3" type="text" name="codPelicula" id="editarCodigo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarNombre">Nombre</label>
+                        <input class="form-control mb-3" type="text" name="nomPelicula" id="editarNombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarGenero">Género</label>
+                        <input class="form-control mb-3" type="text" name="idGenero" id="editarGenero">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarDuracion">Duración</label>
+                        <input class="form-control mb-3" type="text" name="duracion" id="editarDuracion">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarAnio">Año</label>
+                        <input class="form-control mb-3" type="text" name="anio" id="editarAnio">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarCopias">Copias</label>
+                        <input class="form-control mb-2" type="text" name="copias" id="editarCopias">
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

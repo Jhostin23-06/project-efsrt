@@ -1,0 +1,44 @@
+<!-- Modal -->
+<div class="modal fade mt-5" id="registrarPeliculaModal" th:fragment="registroModal" tabindex="-1" aria-labelledby="registrarPeliculaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registrarPeliculaModalLabel">Registrar Película</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/peliculas}" method="post" id="peliculaForm" onsubmit="return registrarPelicula(event);" novalidate>
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input class="form-control mb-3" type="text" name="codPelicula" id="codigo" readonly>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control mb-3" type="text" name="nomPelicula" id="nombre" >
+          </div>
+          <div class="form-group">
+            <label for="genero">Género</label>
+            <input class="form-control mb-3" type="text" name="nomGenero" id="genero" >
+          </div>
+          <div class="form-group">
+            <label for="duracion">Duración</label>
+            <input class="form-control mb-3" type="text" name="duracion" id="duracion" >
+          </div>
+          <div class="form-group">
+            <label for="anio">Año</label>
+            <input class="form-control mb-3" type="text" name="anio" id="anio" >
+          </div>
+          <div class="form-group">
+            <label for="copias">Copias</label>
+            <input class="form-control mb-3" type="text" name="copias" id="copias" >
+          </div>
+          <br>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

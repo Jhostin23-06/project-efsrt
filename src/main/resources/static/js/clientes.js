@@ -22,6 +22,10 @@ function registrarCliente(event) {
     const form = event.target;
     const formData = new FormData(form);
 
+    if (!validarFormulario()) {
+        return false; // Si la validación falla, no envía el formulario
+    }
+
     fetch(form.action, {
         method: form.method,
         body: formData
@@ -52,11 +56,16 @@ function registrarCliente(event) {
             });
         });
 
+
     return false; // Evita el envío del formulario
 }
 
 function editarCliente(event) {
     event.preventDefault(); // Evita el envío del formulario
+
+    if (!validarFormularioEditar()) {
+        return false; // Si la validación falla, no envía el formulario
+    }
 
     const form = event.target;
     const formData = new FormData(form);
@@ -120,7 +129,7 @@ function eliminarCliente(clienteId) {
                         icon: 'success',
                         title: 'Éxito',
                         text: 'Cliente eliminado correctamente.',
-                        timer: 2000, // 5 segundos
+                        timer: 500, //
                         timerProgressBar: true
                     }).then(() => {
                         window.location.href = '/clientes'; // Redirige después de mostrar la alerta

@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<!-- Fragmento del navbar -->
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="container mt-4">
@@ -70,114 +71,14 @@
     </div>
 </div>
 <br><br><br>
-
+<!-- Fragmento del footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>
+<!-- Fragmentos de los modales -->
+<div th:replace="~{fragments/clientesModal/registro_modal :: registroModal}"></div>
+<div th:replace="~{fragments/clientesModal/editar_modal :: editarModal}"></div>
+<div th:replace="~{fragments/clientesModal/info_modal :: infoModal}"></div>
 
-<!-- Modal -->
-<div class="modal fade mt-5" id="registrarClienteModal" tabindex="-1" aria-labelledby="registrarClienteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registrarClienteModalLabel">Registrar Cliente</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/clientes}" method="post" id="clienteForm" onsubmit="return registrarCliente(event);" novalidate>
-                    <div class="form-group">
-                        <label for="codigo">Código</label>
-                        <input class="form-control mb-3" type="text" name="codCliente" id="codigo" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input class="form-control mb-3" type="text" name="nomCliente" id="nombre" >
-                    </div>
-                    <div class="form-group">
-                        <label for="direccion">Dirección</label>
-                        <input class="form-control mb-3" type="text" name="dirCliente" id="direccion" >
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input class="form-control mb-3" type="text" name="telCliente" id="telefono" placeholder="987654321" >
-                    </div>
-                    <div class="form-group">
-                        <label for="fechaIngreso">Fecha de Ingreso</label>
-                        <input class="form-control mb-2" type="text" name="fechaingCli" id="fechaIngreso" placeholder="AAAA-MM-DD" >
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-between mt-3">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Modal para editar cliente -->
-<div class="modal fade mt-5" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarClienteModalLabel">Editar Cliente</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/clientes/editar}" method="post" id="editarClienteForm" onsubmit="return editarCliente(event);" novalidate>
-                    <input type="hidden" name="id" id="editarId">
-                    <div class="form-group">
-                        <label for="editarCodigo">Código</label>
-                        <input class="form-control mb-3" type="text" name="codCliente" id="editarCodigo">
-                    </div>
-                    <div class="form-group">
-                        <label for="editarNombre">Nombre</label>
-                        <input class="form-control mb-3" type="text" name="nomCliente" id="editarNombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="editarDireccion">Dirección</label>
-                        <input class="form-control mb-3" type="text" name="dirCliente" id="editarDireccion">
-                    </div>
-                    <div class="form-group">
-                        <label for="editarTelefono">Teléfono</label>
-                        <input class="form-control mb-3" type="text" name="telCliente" id="editarTelefono" placeholder="987654321">
-                    </div>
-                    <div class="form-group">
-                        <label for="editarFechaIngreso">Fecha de Ingreso</label>
-                        <input class="form-control mb-2" type="text" name="fechaingCli" id="editarFechaIngreso" placeholder="AAAA-MM-DD">
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-between mt-3">
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal para información del cliente -->
-<div class="modal fade mt-5" id="infoClienteModal" tabindex="-1" aria-labelledby="infoClienteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="infoClienteModalLabel">Información del Cliente</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p><strong>ID:</strong> <span id="infoId"></span></p>
-                <p><strong>Código:</strong> <span id="infoCodigo"></span></p>
-                <p><strong>Nombre:</strong> <span id="infoNombre"></span></p>
-                <p><strong>Dirección:</strong> <span id="infoDireccion"></span></p>
-                <p><strong>Teléfono:</strong> <span id="infoTelefono"></span></p>
-                <p><strong>Fecha de Ingreso:</strong> <span id="infoFechaIngreso"></span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
 <script src="/js/clientes.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
