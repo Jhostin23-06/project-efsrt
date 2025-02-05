@@ -1,6 +1,5 @@
 package com.cibertec.projectefsrt.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,13 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cibertec.projectefsrt.entities.Cliente;
 import com.cibertec.projectefsrt.entities.Empleado;
 import com.cibertec.projectefsrt.services.EmpleadoService;
-import com.cibertec.projectefsrt.utilidad.DateUtil;
 
 @Controller
 @RequestMapping("/empleados")
@@ -44,8 +40,6 @@ public class EmpleadoController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Empleado> empleadoById(@PathVariable Integer id) {
-		
-		System.out.println("ById");
 		
 		try {
 			
@@ -93,7 +87,7 @@ public class EmpleadoController {
         
         Map<String, String> response = new HashMap<>();
         
-        response.put("codigo", codigo);
+        response.put("codigo", "E"+codigo);
         
         return response;
     }

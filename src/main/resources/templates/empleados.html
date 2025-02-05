@@ -17,7 +17,7 @@
 	        <form th:action="@{/empleados/buscar}" method="get">
 	            <div class="col-md-4">
 	                <input type="hidden" name="tipo" value="search">
-	                <input class="form-control" type="text" name="query" placeholder="Buscar nombre o id"> <br>
+	                <input class="form-control" type="text" name="query" oninput="buscar(this.value)" placeholder="Buscar nombre o id"> <br>
 	                <button type="submit" class="btn btn-success">Buscar</button>
 	                <a th:href="@{/empleados}" class="btn btn-secondary">Listado Completo</a>
 	            </div>
@@ -28,7 +28,7 @@
 	        </form>
 	    </div>
 	    <br><br>
-	    <div class="table-responsive text-center">
+	    <div class="table-responsive text-center" id="container-reg">
 	        <table class="table table-bordered table-hover">
 	            <thead class="table-dark">
 	            <tr>

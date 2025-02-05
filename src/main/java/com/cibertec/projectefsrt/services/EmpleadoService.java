@@ -60,6 +60,6 @@ public class EmpleadoService {
 		
 		i++;
 		
-		return "E000" + i;
+		return ""+i;
 	}
 }
