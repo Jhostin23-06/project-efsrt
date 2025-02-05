@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
 
@@ -34,9 +33,7 @@ public class Empleado {
 
     @Column(name = "fechaing_emp", nullable = false)
     private LocalDate fechaingEmp;
-
-    @ColumnDefault("1")
+    
     @Column(name = "estado_emp", nullable = false)
-    private Integer estadoEmp;
-
+    private Integer estadoEmp = 1;
 }
