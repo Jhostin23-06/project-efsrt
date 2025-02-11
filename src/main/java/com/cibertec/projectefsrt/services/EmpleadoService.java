@@ -47,11 +47,9 @@ public class EmpleadoService {
 		empleadoRepository.deleteById(id);
 	}
 	
-	public Empleado getById(Integer id) {
+	public Optional<Empleado> getById(Integer id) {
 		
-		return empleadoRepository.findById(id)
-				
-				.orElseThrow(() -> new IllegalArgumentException("Empleado no encontrado"));
+		return empleadoRepository.findById(id);
 	}
 	
 	public String generarSigCodEmpleado() {

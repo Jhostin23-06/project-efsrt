@@ -1,9 +1,6 @@
 package com.cibertec.projectefsrt.controllers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,26 +38,23 @@ public class EmpleadoController {
 		
 		return "empleados";
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Empleado> empleadoById(@PathVariable Integer id) {
-		
-		System.out.println("ById");
-		
-		try {
-			
-			Empleado emp = empleadoService.getById(id);
-			
-			return ResponseEntity.ok(emp);
-		} catch(IllegalArgumentException e) {
-			
-			return ResponseEntity.notFound().build();
-		} catch(Exception e) {
-			
-			return ResponseEntity.internalServerError().build();
+	@ResponseBody
+	public Map<String, Object> obtenerEmpleado(@PathVariable Integer id){
+		Empleado empleado = empleadoService.getById(id).orElse(null);
+		Map<String, Object> response = new HashMap<>();
+		if (empleado != null) {
+			response.put("id", empleado.getId());
+			response.put("codEmpleado", empleado.getCodEmpleado());
+			response.put("nomEmpleado", empleado.getNomEmpleado());
+			response.put("dirEmpleado", empleado.getDirEmpleado());
+			response.put("telEmpleado", empleado.getTelEmpleado());
+			response.put("fechaingEmp", DateUtil.formatDate(empleado.getFechaingEmp()));
 		}
+		return response;
 	}
-	
+
 	@PostMapping
 	public String createEmpleado(@ModelAttribute Empleado empleado) {
 		

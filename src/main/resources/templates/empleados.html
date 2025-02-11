@@ -73,7 +73,7 @@
 	                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	            </div>
 	            <div class="modal-body">
-	                <form th:action="@{/empleados}" method="post" id="empleadoForm">
+	                <form th:action="@{/empleados}" method="post" id="empleadoForm" onsubmit="return registrarEmpleado(event);" novalidate>
 	                    <div class="form-group">
 	                        <label for="codigo">Código</label>
 	                        <input class="form-control mb-3" type="text" name="codEmpleado" id="codigo" readonly>
