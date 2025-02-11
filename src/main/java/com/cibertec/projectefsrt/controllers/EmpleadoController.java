@@ -1,6 +1,6 @@
 package com.cibertec.projectefsrt.controllers;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.function.EntityResponse;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cibertec.projectefsrt.entities.Cliente;
 import com.cibertec.projectefsrt.entities.Empleado;
 import com.cibertec.projectefsrt.services.EmpleadoService;
+import com.cibertec.projectefsrt.utilidad.DateUtil;
 
 @Controller
 @RequestMapping("/empleados")
@@ -33,28 +34,39 @@ public class EmpleadoController {
 		
 		empleados = empleadoService.readEmpleados();
 		
-		System.out.println(empleados);
-		
 		model.addAttribute("empleados", empleados);
 		
 		return "empleados";
 	}
-	
+
+	@GetMapping("/{id}")
+	@ResponseBody
+	public Map<String, Object> obtenerEmpleado(@PathVariable Integer id){
+		Empleado empleado = empleadoService.getById(id).orElse(null);
+		Map<String, Object> response = new HashMap<>();
+		if (empleado != null) {
+			response.put("id", empleado.getId());
+			response.put("codEmpleado", empleado.getCodEmpleado());
+			response.put("nomEmpleado", empleado.getNomEmpleado());
+			response.put("dirEmpleado", empleado.getDirEmpleado());
+			response.put("telEmpleado", empleado.getTelEmpleado());
+			response.put("fechaingEmp", DateUtil.formatDate(empleado.getFechaingEmp()));
+		}
+		return response;
+	}
+
 	@PostMapping
 	public String createEmpleado(@ModelAttribute Empleado empleado) {
-		
-		System.out.println(empleado);
 		
 		empleadoService.createEmpleado(empleado);
 		
 		return "redirect:/empleados";
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<Void> deleteEmpleado(@PathVariable Integer id) {
 		
-		try {
-			
+		try {			
 			empleadoService.deleteEmpleado(id);
 			
 			return ResponseEntity.noContent().build();
@@ -67,4 +79,16 @@ public class EmpleadoController {
 		}
 	}
 	
+	@GetMapping("/generarCodigo")
+    @ResponseBody
+    public Map<String, String> generarCodigo() {
+		
+        String codigo = empleadoService.generarSigCodEmpleado();
+        
+        Map<String, String> response = new HashMap<>();
+        
+        response.put("codigo", codigo);
+        
+        return response;
+    }
 }

@@ -7,9 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Data
 @Entity
@@ -34,9 +35,12 @@ public class Empleado {
 
     @Column(name = "fechaing_emp", nullable = false)
     private LocalDate fechaingEmp;
-
-    @ColumnDefault("1")
+    
     @Column(name = "estado_emp", nullable = false)
     private Integer estadoEmp;
+
+    public Empleado() {
+        this.estadoEmp = 1;
+    }
 
 }
