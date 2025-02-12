@@ -21,8 +21,8 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1 class="display-4">Bienvenido a Estudios Torbellino</h1>
-            <p class="lead">Administra y mantén actualizada la información de nuestros clientes y empleados de manera eficiente.</p>
-            <p class="lead">Además de gestionar las películas y actores.</p>
+            <p class="lead" id="typewriter-text">Administra y mantén actualizada la información de nuestros clientes y empleados de manera eficiente.
+            <span class="new-line">Además de gestionar las películas y actores.</span> </p>
             <a th:href="@{/clientes}" class="btn btn-primary btn-lg">Gestionar Clientes</a>
             <a th:href="@{/empleados}" class="btn btn-secondary btn-lg">Gestionar Empleados</a>
         </div>
@@ -55,6 +55,7 @@
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 
+<script src="/js/script.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

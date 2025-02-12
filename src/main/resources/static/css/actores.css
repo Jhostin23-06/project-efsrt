@@ -6,9 +6,21 @@
     --hover-color: #e0dcdc; /* Gris claro para hover */
 }
 
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     background-color: var(--secondary-color);
     color: var(--text-color);
+}
+
+h1 {
+    color: var(--highlight-color);
+    text-shadow: 1px 1.5px 2.5px var(--primary-color);
 }
 
 .navbar {
@@ -33,31 +45,23 @@ body {
     color: var(--primary-color) !important;
 }
 
-h1 {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
 footer {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     text-align: center;
-    padding: .2rem 0;
-    margin-top: 2rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    padding: 0.3rem 0;
+    margin-top: auto;
 }
 
 .btn-primary {
-    background-color: red;
+    background-color: lightskyblue;
+    color: black;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #b50d0d;
-    color: white;
+    background-color: #5ac3fd;
+    color: var(--primary-color);
 }
 
 .btn-danger {
@@ -70,39 +74,11 @@ footer {
     border-color: #990000;
 }
 
-.hero-section {
-    background: linear-gradient(135deg, #f8e1e7, #e0dcdc);
-    padding: 3rem 1rem;
+table {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+}
+
+table th, table td {
     text-align: center;
-    border-radius: 10px;
-    margin: 2rem auto;
-}
-
-.hero-section h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.hero-section p {
-    font-size: 1.2rem;
-}
-
-.typewriter p {
-    display: inline-block;
-    overflow: hidden;
-    border-right: .15em solid var(--primary-color);
-    white-space: normal;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: blink-caret .75s step-end infinite;
-    max-width: 20ch;
-}
-
-.new-line {
-    display: block; /* Makes the span start on a new line */
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--primary-color) }
 }

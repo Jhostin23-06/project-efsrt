@@ -3,6 +3,7 @@ package com.cibertec.projectefsrt.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
@@ -19,5 +20,13 @@ public class Actor {
 
     @Column(name = "nom_actor", nullable = false, length = 80)
     private String nomActor;
+
+    @ColumnDefault("1")
+    @Column(name = "estado_act", nullable = false)
+    private Integer estadoAct;
+
+    public Actor() {
+        this.estadoAct = 1;
+    }
 
 }

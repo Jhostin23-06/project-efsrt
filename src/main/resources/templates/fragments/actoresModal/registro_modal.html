@@ -1,0 +1,28 @@
+<!-- Modal para registrar actor -->
+<div class="modal fade mt-5" th:fragment="registroModal" id="registrarActorModal" tabindex="-1" aria-labelledby="registrarActorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registrarActorModalLabel">Registrar Actor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/actores}" method="post" id="actorForm" onsubmit="return registrarActor(event);" novalidate>
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input class="form-control mb-3" type="text" name="codActor" id="codigo" readonly>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control mb-3" type="text" name="nomActor" id="nombre" required>
+          </div>
+          <br>
+          <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

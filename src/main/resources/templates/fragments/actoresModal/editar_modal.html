@@ -1,0 +1,29 @@
+<!-- Modal para editar cliente -->
+<div class="modal fade mt-5" th:fragment="editarModal" id="editarActorModal" tabindex="-1" aria-labelledby="editarActorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarActorModalLabel">Editar Actor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/actores/actualizar}" method="post" id="editarActorForm" onsubmit="return editarActor(event);" novalidate>
+                    <input type="hidden" name="id" id="editarId">
+                    <div class="form-group">
+                        <label for="editarCodigo">Código</label>
+                        <input class="form-control mb-3" type="text" name="codActor" id="editarCodigo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarNombre">Nombre</label>
+                        <input class="form-control mb-3" type="text" name="nomActor" id="editarNombre">
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

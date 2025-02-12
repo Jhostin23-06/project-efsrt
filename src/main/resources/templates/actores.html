@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Actores</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="icon" href="/img/icon-principal.ico">
+    <link rel="stylesheet" href="/css/actores.css">
+</head>
+<body>
+
+<!-- Fragmento del navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-4">
+    <h1 class="text-center">Gestión de Actores</h1>
+    <br><br>
+    <div>
+        <form th:action="@{/actores/buscar}" method="get">
+            <div class="col-md-4">
+                <input type="hidden" name="tipo" value="search">
+                <input class="form-control" type="text" name="query" placeholder="Buscar nombre o id"> <br>
+                <button type="submit" class="btn btn-success">Buscar</button>
+                <a th:href="@{/actores}" class="btn btn-secondary">Listado Completo</a>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#registrarActorModal">Nuevo Actor</button>
+                <a th:href="@{/}" class="btn btn-secondary">Regresar al Inicio</a>
+            </div>
+        </form>
+    </div>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="actor : ${actores}">
+                <td th:text="${actor.id}"></td>
+                <td th:text="${actor.codActor}"></td>
+                <td th:text="${actor.nombre}"></td>
+                <td>
+                    <a type="button" class="btn btn-sm btn-info" title="Detalle" data-bs-toggle="modal" data-bs-target="#infoActorModal" th:data-id="${actor.id}">
+                        <img alt="" src="/img/info.png" width="15" height="15" class="d-inline-block" />
+                    </a>
+                    <button type="button" class="btn btn-sm btn-warning" title="Editar" data-bs-toggle="modal" data-bs-target="#editarActorModal" th:data-id="${actor.id}">
+                        <img alt="" src="/img/editar.png" width="15" height="15" class="d-inline-block" />
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger" title="Eliminar" th:onclick="'eliminarActor(' + ${actor.id} + ')'">
+                        <img alt="" src="/img/eliminar.png" width="15" height="15" class="d-inline-block" />
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br><br><br>
+<!-- Fragmento del footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- Fragmentos de los modales -->
+<div th:replace="~{fragments/actoresModal/registro_modal :: registroModal}"></div>
+<div th:replace="~{fragments/actoresModal/editar_modal :: editarModal}"></div>
+<!-- <div th:replace="~{fragments/actoresModal/info_modal :: infoModal}"></div>  -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
+<script src="/js/actores.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
