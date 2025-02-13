@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Alquileres</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="icon" href="/img/icon-principal.ico">
+  <link rel="stylesheet" href="/css/alquileres.css">
+</head>
+<body>
+
+<!-- Fragmento del navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-4">
+  <h1 class="text-center">Gestión de Alquileres</h1>
+  <br><br>
+  <div>
+    <form th:action="@{/alquileres/buscar}" method="get">
+      <div class="col-md-4">
+        <input type="hidden" name="tipo" value="search">
+        <input class="form-control" type="text" name="query" placeholder="Buscar por código"> <br>
+        <button type="submit" class="btn btn-success">Buscar</button>
+        <a th:href="@{/alquileres}" class="btn btn-secondary">Listado Completo</a>
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#registrarAlquilerModal">Nuevo Alquiler</button>
+        <a th:href="@{/}" class="btn btn-secondary">Regresar al Inicio</a>
+      </div>
+    </form>
+  </div>
+  <br><br>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Código</th>
+        <th>Fecha de Préstamo</th>
+        <th>Fecha de Devolución</th>
+        <th>Empleado</th>
+        <th>Cliente</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="alquiler : ${alquileres}">
+        <td th:text="${alquiler.id}"></td>
+        <td th:text="${alquiler.codAlquiler}"></td>
+        <td th:text="${alquiler.fechaPrest}"></td>
+        <td th:text="${alquiler.fechaDev}"></td>
+        <td th:text="${alquiler.idEmpleado}"></td>
+        <td th:text="${alquiler.idCliente}"></td>
+        <td>
+          <a type="button" class="btn btn-sm btn-info" title="Detalle" data-bs-toggle="modal" data-bs-target="#infoAlquilerModal" th:data-id="${alquiler.id}">
+            <img alt="" src="/img/info.png" width="15" height="15" class="d-inline-block" />
+          </a>
+          <button type="button" class="btn btn-sm btn-warning" title="Editar" data-bs-toggle="modal" data-bs-target="#editarAlquilerModal" th:data-id="${alquiler.id}">
+            <img alt="" src="/img/editar.png" width="15" height="15" class="d-inline-block" />
+          </button>
+          <button type="button" class="btn btn-sm btn-danger" title="Eliminar" th:onclick="'eliminarAlquiler(' + ${alquiler.id} + ')'">
+            <img alt="" src="/img/eliminar.png" width="15" height="15" class="d-inline-block" />
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br><br><br>
+<!-- Fragmento del footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- Fragmentos de los modales -->
+<!--<div th:replace="~{fragments/alquileresModal/registro_modal :: registroModal}"></div>-->
+<!--<div th:replace="~{fragments/alquileresModal/editar_modal :: editarModal}"></div>-->
+<!--<div th:replace="~{fragments/alquileresModal/info_modal :: infoModal}"></div>-->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
+<script src="/js/alquileres.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

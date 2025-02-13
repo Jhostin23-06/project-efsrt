@@ -159,3 +159,64 @@ function registrarActor(event) {
 
     return false; // Evita el envío del formulario
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const infoActorModal = document.getElementById('infoActorModal');
+    infoActorModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const actoresId = button.getAttribute('data-id');
+
+        fetch(`/actores/${actoresId}`)
+            .then(response => response.json())
+            .then(actor => {
+                document.getElementById('infoId').textContent = actor.id;
+                document.getElementById('infoCodigo').textContent = actor.codActor;
+                document.getElementById('infoNombre').textContent = actor.nomActor;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+});
+
+function eliminarActor(actorId) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'No podrás revertir esto.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/actores/eliminar/${actorId}`, {
+                method: 'PUT'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Actor eliminado correctamente.',
+                        timer: 500, //
+                        timerProgressBar: true
+                    }).then(() => {
+                        window.location.href = '/actores'; // Redirige después de mostrar la alerta
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un problema al eliminar el actor.',
+                    });
+                });
+        }
+    });
+}

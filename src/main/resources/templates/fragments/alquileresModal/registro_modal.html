@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade mt-5" th:fragment="registroModal" id="registrarAlquilerModal" tabindex="-1" aria-labelledby="registrarAlquilerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registrarAlquilerModalLabel">Registrar Alquiler</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/alquileres/guardar}" method="post" id="alquilerForm" onsubmit="return registrarAlquiler(event);" novalidate>
+          <div class="form-group">
+            <label for="codAlquiler">Código</label>
+            <input class="form-control mb-3" type="text" name="codAlquiler" id="codAlquiler" readonly>
+          </div>
+          <div class="form-group">
+            <label for="fechaPrest">Fecha de Préstamo</label>
+            <input class="form-control mb-3" type="datetime-local" name="fechaPrest" id="fechaPrest">
+          </div>
+          <div class="form-group">
+            <label for="fechaDev">Fecha de Devolución</label>
+            <input class="form-control mb-3" type="datetime-local" name="fechaDev" id="fechaDev">
+          </div>
+          <div class="form-group">
+            <label for="idEmpleado">Empleado</label>
+            <select class="form-control mb-3" name="idEmpleado" id="idEmpleado">
+              <option th:each="empleado : ${empleados}" th:value="${empleado.id}" th:text="${empleado.nombre}"></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="idCliente">Cliente</label>
+            <select class="form-control mb-3" name="idCliente" id="idCliente">
+              <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="estadoAlq">Estado</label>
+            <input class="form-control mb-3" type="text" name="estadoAlq" id="estadoAlq">
+          </div>
+          <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
