@@ -1,6 +1,5 @@
 package com.cibertec.projectefsrt.repositories;
 
-import com.cibertec.projectefsrt.entities.Actor;
 import com.cibertec.projectefsrt.entities.Alquiler;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

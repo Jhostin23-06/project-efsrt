@@ -1,5 +1,3 @@
-console.log("empleados")
-
 document.addEventListener('DOMContentLoaded', function () {
 	
     fetch('/empleados/generarCodigo')
@@ -54,10 +52,116 @@ function registrarEmpleado(event) {
             });
         });
 
-    return false; // Evita el envío del formulario
+    return false;
 }
 
-// funcion para informacion de empleado
+function editarEmpleado(event) {
+	
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: form.method,
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Empleado editado correctamente.',
+                timer: 2000,
+                timerProgressBar: true
+            }).then(() => {
+                window.location.href = '/empleados';
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un problema al editar el cliente.',
+            });
+        });
+
+    return false;
+}
+
+function eliminarEmpleado(empleadoId) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'No podrás revertir esto.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/empleados/${empleadoId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Empleado eliminado correctamente.',
+                        timer: 500,
+                        timerProgressBar: true
+                    }).then(() => {
+                        window.location.href = '/empleados';
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un problema al eliminar al empleado.',
+                    });
+                });
+        }
+    });
+}
+
+const editarEmpleadoModal = document.getElementById('editarEmpleadoModal');
+
+editarEmpleadoModal.addEventListener('show.bs.modal', function (event) {
+	
+    const button = event.relatedTarget;
+	
+    const empleadoId = button.getAttribute('data-id');
+
+    fetch(`/empleados/${empleadoId}`)
+        .then(response => response.text())
+        .then(text => {
+			
+            const empleado = JSON.parse(text);
+			
+            document.getElementById('editarId').value = empleado.id;
+            document.getElementById('editarCodigo').value = empleado.codEmpleado;
+            document.getElementById('editarNombre').value = empleado.nomEmpleado;
+            document.getElementById('editarDireccion').value = empleado.dirEmpleado;
+            document.getElementById('editarTelefono').value = empleado.telEmpleado;
+            document.getElementById('editarFechaIngreso').value = empleado.fechaingEmp;
+        })
+        .catch(error => console.error('Error:', error));
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     const infoEmpleado = document.getElementById('infoEmpleadoModal');

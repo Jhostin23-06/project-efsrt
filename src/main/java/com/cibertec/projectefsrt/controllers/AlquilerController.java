@@ -1,6 +1,5 @@
 package com.cibertec.projectefsrt.controllers;
 
-import com.cibertec.projectefsrt.entities.Actor;
 import com.cibertec.projectefsrt.entities.Alquiler;
 import com.cibertec.projectefsrt.services.AlquilerService;
 import org.springframework.beans.factory.annotation.Autowired;

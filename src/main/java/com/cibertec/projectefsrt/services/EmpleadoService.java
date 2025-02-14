@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cibertec.projectefsrt.entities.Cliente;
 import com.cibertec.projectefsrt.entities.Empleado;
 import com.cibertec.projectefsrt.repositories.EmpleadoRepository;
 
@@ -52,12 +51,24 @@ public class EmpleadoService {
 		return empleadoRepository.findById(id);
 	}
 	
-	public String generarSigCodEmpleado() {
+	public List<Empleado> buscarEmpleadosActivos(String query){
 		
-		int i = readEmpleados().size();
+        return empleadoRepository.findByEstadoEmpAndNomEmpleadoContaining(1,query);
+    }
+	
+	public String generarSigCodEmpleado(){
 		
-		i++;
-		
-		return "E000" + i;
-	}
+        Optional<Empleado> ultimoEmpleado = empleadoRepository.findTopByOrderByCodEmpleadoDesc();
+        
+        if (ultimoEmpleado.isPresent()) {
+        	
+            String ultimoCodigo = ultimoEmpleado.get().getCodEmpleado();
+            
+            int numero = Integer.parseInt(ultimoCodigo.substring(1)) + 1;
+            
+            return "E" + String.format("%04d", numero);
+        } else {
+            return "E0001";
+        }
+    }
 }
