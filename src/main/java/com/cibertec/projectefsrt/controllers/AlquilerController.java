@@ -3,9 +3,11 @@ package com.cibertec.projectefsrt.controllers;
 import com.cibertec.projectefsrt.entities.Alquiler;
 import com.cibertec.projectefsrt.entities.Cliente;
 import com.cibertec.projectefsrt.entities.Empleado;
+import com.cibertec.projectefsrt.entities.Pelicula;
 import com.cibertec.projectefsrt.services.AlquilerService;
 import com.cibertec.projectefsrt.services.ClienteService;
 import com.cibertec.projectefsrt.services.EmpleadoService;
+import com.cibertec.projectefsrt.services.PeliculaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,8 @@ public class AlquilerController {
 
     @Autowired
     private ClienteService clienteService;
+    @Autowired
+    private PeliculaService peliculaService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -77,8 +81,8 @@ public class AlquilerController {
         // Cargar los clientes y empleados
         List<Cliente> clientes = clienteService.findAllActive();
         List<Empleado> empleados = empleadoService.readEmpleados();
+        List<Pelicula> peliculas = peliculaService.listarPeliculas();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         for (Alquiler alquiler : alquileres) {
             Map<String, Object> alquilerMap = Map.of(
@@ -86,6 +90,7 @@ public class AlquilerController {
                 "codAlquiler", alquiler.getCodAlquiler(),
                 "fechaPrest", alquiler.getFechaPrest(),
                 "fechaDev", alquiler.getFechaDev(),
+                "idPelicula", alquiler.getIdPelicula().getNomPelicula(),
                 "idEmpleado", alquiler.getIdEmpleado().getNomEmpleado(),
                 "idCliente", alquiler.getIdCliente().getNomCliente()
             );
@@ -93,6 +98,7 @@ public class AlquilerController {
         }
 
         model.addAttribute("alquileres", alquileresMap);
+        model.addAttribute("peliculas", peliculas);
         model.addAttribute("clientes", clientes);
         model.addAttribute("empleados", empleados);
         return "alquileres";
@@ -147,6 +153,7 @@ public class AlquilerController {
             alquilerMap.put("codAlquiler", alquiler.getCodAlquiler());
             alquilerMap.put("fechaPrest", alquiler.getFechaPrest());
             alquilerMap.put("fechaDev", alquiler.getFechaDev());
+            alquilerMap.put("idPelicula", alquiler.getIdPelicula().getNomPelicula());
             alquilerMap.put("idEmpleado", alquiler.getIdEmpleado().getNomEmpleado());
             alquilerMap.put("idCliente", alquiler.getIdCliente().getNomCliente());
             alquileresMap.add(alquilerMap);

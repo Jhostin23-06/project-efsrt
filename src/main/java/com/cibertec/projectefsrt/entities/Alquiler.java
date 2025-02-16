@@ -1,5 +1,6 @@
 package com.cibertec.projectefsrt.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "alquiler", schema = "bd_peliculas")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Alquiler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,10 @@ public class Alquiler {
 
     @Column(name = "fecha_dev", nullable = false)
     private LocalDate fechaDev;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_pelicula", nullable = false)
+    private Pelicula idPelicula;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empleado", nullable = false)

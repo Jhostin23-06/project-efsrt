@@ -21,6 +21,13 @@
             <input class="form-control mb-3" type="date" name="fechaDev" id="fechaDev" required>
           </div>
           <div class="form-group">
+            <label for="idEmpleado">Película</label>
+            <select class="form-control mb-3" name="idPelicula" id="idPelicula">
+              <option value="" selected><--- Seleccionar Pelicula ---></option>
+              <option th:each="pelicula : ${peliculas}" th:value="${pelicula.id}" th:text="${pelicula.nomPelicula}"></option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="idEmpleado">Empleado</label>
             <select class="form-control mb-3" name="idEmpleado" id="idEmpleado">
                 <option value="" selected><--- Seleccionar Empleado ---></option>

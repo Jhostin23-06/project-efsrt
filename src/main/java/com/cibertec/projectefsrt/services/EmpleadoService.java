@@ -25,7 +25,7 @@ public class EmpleadoService {
 	
 	public List<Empleado> readEmpleados() {
 		
-		return empleadoRepository.findAll();
+		return empleadoRepository.findByEstadoEmp(1);
 	}
 	
 	@Transactional

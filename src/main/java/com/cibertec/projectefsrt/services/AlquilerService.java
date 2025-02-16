@@ -15,7 +15,7 @@ public class AlquilerService {
     private AlquilerRepository alquilerRepository;
 
     public List<Alquiler> findAll(){
-        return alquilerRepository.findAll();
+        return alquilerRepository.findByEstadoAlq(1);
     }
 
     public Optional<Alquiler> findById(int id){

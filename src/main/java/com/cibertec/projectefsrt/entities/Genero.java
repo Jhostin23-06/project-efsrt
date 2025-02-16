@@ -1,5 +1,6 @@
 package com.cibertec.projectefsrt.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "genero", schema = "bd_peliculas")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Genero {
     @Id
     @Column(name = "id_genero", nullable = false)

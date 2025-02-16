@@ -13,4 +13,6 @@ public interface AlquilerRepository extends JpaRepository<Alquiler, Integer> {
 
     Optional<Alquiler> findTopByOrderByCodAlquilerDesc();
 
+    List<Alquiler> findByEstadoAlq(int estado);
+
 }

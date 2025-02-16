@@ -15,7 +15,7 @@ public class PeliculaService {
     private PeliculaRepository peliculaRepository;
 
     public List<Pelicula> listarPeliculas(){
-        return peliculaRepository.findAll();
+        return peliculaRepository.findByEstadoPel(1);
     }
 
     public Pelicula guardarPelicula(Pelicula pelicula){

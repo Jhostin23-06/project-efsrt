@@ -12,4 +12,6 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 	List<Empleado> findByEstadoEmpAndNomEmpleadoContaining(int estado, String nombre);
 	
 	Optional<Empleado> findTopByOrderByCodEmpleadoDesc();
+
+	List<Empleado> findByEstadoEmp(int estado);
 }

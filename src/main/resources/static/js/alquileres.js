@@ -123,10 +123,11 @@ function registrarAlquiler(event) {
 
 function validarFormulario() {
     const codigo = document.getElementById('codigo').value;
+    const pelicula = document.getElementById('idPelicula').value;
     const empleado = document.getElementById('idEmpleado').value;
     const cliente = document.getElementById('idCliente').value;
 
-    if ( codigo === '' || empleado === '' || cliente === '') {
+    if ( codigo === '' || empleado === '' || pelicula === '' || cliente === '') {
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -168,6 +169,17 @@ editarAlquilerModal.addEventListener('show.bs.modal', function (event) {
                 }
             }
 
+            // Set selected pelicula
+            const peliculaSelect = document.getElementById('editarPelicula');
+            console.log('Pelicula select options:', peliculaSelect.options);  // Imprimir opciones de pelicula
+            for (let option of peliculaSelect.options) {
+                console.log('Comparando pelicula:', option.value, 'con', alquiler.idPelicula.id);
+                if (parseInt(option.value) === alquiler.idPelicula.id) {  // Comparar con idPelicula.id
+                    option.selected = true;
+                    break;
+                }
+            }
+
             // Set selected cliente
             const clienteSelect = document.getElementById('editarCliente');
             console.log('Cliente select options:', clienteSelect.options);  // Imprimir opciones de cliente
@@ -188,10 +200,11 @@ function validarFormularioEditar() {
     const codigo = document.getElementById('editarCodigo').value.trim();
     const prestamo = document.getElementById('editarPrestamo').value.trim();
     const devolucion = document.getElementById('editarDevolucion').value.trim();
+    const pelicula = document.getElementById('editarPelicula').value.trim();
     const empleado = document.getElementById('editarEmpleado').value.trim();
     const cliente = document.getElementById('editarCliente').value.trim();
 
-    if (codigo === '' || prestamo === '' || devolucion === '' || empleado === '' || cliente === '') {
+    if (codigo === '' || prestamo === '' || devolucion === '' || pelicula === '' || empleado === '' || cliente === '') {
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -216,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('infoCodigo').textContent = alquiler.codAlquiler;
                 document.getElementById('infoPrestamo').textContent = alquiler.fechaPrest;
                 document.getElementById('infoDevolucion').textContent = alquiler.fechaDev;
+                document.getElementById('infoPelicula').textContent = alquiler.idPelicula.nomPelicula;
                 document.getElementById('infoEmpleado').textContent = alquiler.idEmpleado.nomEmpleado;
                 document.getElementById('infoCliente').textContent = alquiler.idCliente.nomCliente;
                 console.log(alquiler);
@@ -224,4 +238,48 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error:', error));
     });
 });
+
+function eliminarAlquiler(alquilerId) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'No podrás revertir esto.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/alquileres/eliminar/${alquilerId}`, {
+                method: 'PUT'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Alquiler eliminado correctamente.',
+                        timer: 500, //
+                        timerProgressBar: true
+                    }).then(() => {
+                        window.location.href = '/alquileres'; // Redirige después de mostrar la alerta
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un problema al eliminar el alquiler.',
+                    });
+                });
+        }
+    });
+}
 

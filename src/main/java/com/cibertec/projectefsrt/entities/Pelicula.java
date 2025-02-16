@@ -1,5 +1,6 @@
 package com.cibertec.projectefsrt.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Setter
 @Entity
 @Table(name = "pelicula", schema = "bd_peliculas")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
