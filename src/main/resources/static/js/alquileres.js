@@ -163,7 +163,6 @@ editarAlquilerModal.addEventListener('show.bs.modal', function (event) {
             for (let option of empleadoSelect.options) {
                 console.log('Comparando empleado:', option.value, 'con', alquiler.idEmpleado.id);
                 if (parseInt(option.value) === alquiler.idEmpleado.id) {  // Comparar con idEmpleado.id
-                    console.log('Empleado encontrado y seleccionado:', option.value);
                     option.selected = true;
                     break;
                 }
@@ -175,7 +174,6 @@ editarAlquilerModal.addEventListener('show.bs.modal', function (event) {
             for (let option of clienteSelect.options) {
                 console.log('Comparando cliente:', option.value, 'con', alquiler.idCliente.id);
                 if (parseInt(option.value) === alquiler.idCliente.id) {  // Comparar con idCliente.id
-                    console.log('Cliente encontrado y seleccionado:', option.value);
                     option.selected = true;
                     break;
                 }
