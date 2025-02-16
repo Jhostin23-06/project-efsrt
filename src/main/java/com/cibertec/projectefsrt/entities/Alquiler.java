@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -13,6 +13,7 @@ import java.time.Instant;
 @Table(name = "alquiler", schema = "bd_peliculas")
 public class Alquiler {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_alquiler", nullable = false)
     private Integer id;
 
@@ -20,16 +21,16 @@ public class Alquiler {
     private String codAlquiler;
 
     @Column(name = "fecha_prest", nullable = false)
-    private Instant fechaPrest;
+    private LocalDate fechaPrest;
 
     @Column(name = "fecha_dev", nullable = false)
-    private Instant fechaDev;
+    private LocalDate fechaDev;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empleado", nullable = false)
     private Empleado idEmpleado;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente idCliente;
 

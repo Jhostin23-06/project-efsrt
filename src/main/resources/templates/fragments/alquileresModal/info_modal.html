@@ -1,0 +1,22 @@
+<!-- Modal para información del cliente -->
+<div class="modal fade mt-5" th:fragment="infoModal" id="infoAlquilerModal" tabindex="-1" aria-labelledby="infoAlquilerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoAlquilerModalLabel">Información del Alquiler</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>ID:</strong> <span id="infoId"></span></p>
+                <p><strong>Código:</strong> <span id="infoCodigo"></span></p>
+                <p><strong>Fecha de préstamo:</strong> <span id="infoPrestamo"></span></p>
+                <p><strong>Fecha de devolución:</strong> <span id="infoDevolucion"></span></p>
+                <p><strong>Empleado:</strong> <span id="infoEmpleado"></span></p>
+                <p><strong>Cliente:</strong> <span id="infoCliente"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

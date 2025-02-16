@@ -33,4 +33,16 @@ public class AlquilerService {
     public List<Alquiler> buscarAlquileresActivos(String query) {
         return alquilerRepository.findByEstadoAlqAndCodAlquilerContaining(1, query);
     }
+
+    public String generarSigCodAlquiler(){
+        Optional<Alquiler> ultimoAlquiler = alquilerRepository.findTopByOrderByCodAlquilerDesc();
+        if (ultimoAlquiler.isPresent()) {
+            String ultimoCodigo = ultimoAlquiler.get().getCodAlquiler();
+            int numero = Integer.parseInt(ultimoCodigo.substring(1)) + 1;
+            return "R" + String.format("%06d", numero);
+        } else {
+            return "R000001";
+        }
+    }
+
 }

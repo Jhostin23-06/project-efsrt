@@ -1,0 +1,47 @@
+<!-- Modal para editar cliente -->
+<div class="modal fade mt-5" th:fragment="editarModal" id="editarAlquilerModal" tabindex="-1" aria-labelledby="editarAlquilerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarAlquilerModalLabel">Editar Alquiler</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/alquileres/actualizar}" method="post" id="editarAlquilerForm" onsubmit="return editarAlquiler(event);" novalidate>
+                    <input type="hidden" name="id" id="editarId">
+                    <div class="form-group">
+                        <label for="editarCodigo">Código</label>
+                        <input class="form-control mb-3" type="text" name="codAlquiler" id="editarCodigo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarPrestamo">Fecha de préstamo</label>
+                        <input class="form-control mb-3" type="date" name="fechaPrest" id="editarPrestamo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarDevolucion">Fecha de devolución</label>
+                        <input class="form-control mb-3" type="date" name="fechaDev" id="editarDevolucion">
+                    </div>
+                    <div class="form-group">
+                        <label for="editarEmpleado">Empleado</label>
+                        <select class="form-select mb-3" name="idEmpleado" id="editarEmpleado">
+                            <option value="" selected>Selecciona un empleado</option>
+                            <option th:each="empleado : ${empleados}" th:value="${empleado.id}" th:text="${empleado.nomEmpleado}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editarCliente">Cliente</label>
+                        <select class="form-select mb-3" name="idCliente" id="editarCliente">
+                            <option value="" selected>Selecciona un cliente</option>
+                            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomCliente}"></option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
