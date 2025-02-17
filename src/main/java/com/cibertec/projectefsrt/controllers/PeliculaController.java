@@ -33,6 +33,13 @@ public class PeliculaController {
         return response;
     }
 
+    @GetMapping("/buscarPeliculasPorGenero")
+    public String buscarPeliculasPorGenero(@RequestParam("nomGenero") String nomGenero, Model model) {
+        List<Pelicula> peliculas = peliculaService.buscarPeliculasPorIdGenero(nomGenero);
+        model.addAttribute("peliculas", peliculas);
+        return "peliculasPorGenero";
+    }
+
     @GetMapping
     public String listarPeliculas(Model model){
         List<Pelicula> peliculas = peliculaService.findAllActive();
@@ -98,6 +105,11 @@ public class PeliculaController {
             peliculaService.guardarPelicula(pelicula);
         }
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/peliculasPorGenero")
+    public String mostrarFormularioBusqueda() {
+        return "peliculasPorGenero";
     }
 
     @GetMapping("/buscar")

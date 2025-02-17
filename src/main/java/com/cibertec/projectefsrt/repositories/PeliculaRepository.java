@@ -1,6 +1,5 @@
 package com.cibertec.projectefsrt.repositories;
 
-import com.cibertec.projectefsrt.entities.Genero;
 import com.cibertec.projectefsrt.entities.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,4 +15,7 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Integer> {
 
     List<Pelicula> findByEstadoPel(Integer estado);
 
+    List<Pelicula> findByIdGenero_Id(Integer idGenero);
+
+    List<Pelicula> findByIdGenero_NomGenero(String nomGenero);
 }

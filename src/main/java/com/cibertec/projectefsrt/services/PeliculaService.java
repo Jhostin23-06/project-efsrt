@@ -49,4 +49,7 @@ public class PeliculaService {
         return peliculaRepository.findByEstadoPel(1);
     }
 
+    public List<Pelicula> buscarPeliculasPorIdGenero(String nomGenero) {
+        return peliculaRepository.findByIdGenero_NomGenero(nomGenero);
+    }
 }
