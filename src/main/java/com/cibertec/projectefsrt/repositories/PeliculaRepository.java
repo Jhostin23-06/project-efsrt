@@ -1,5 +1,6 @@
 package com.cibertec.projectefsrt.repositories;
 
+import com.cibertec.projectefsrt.entities.Genero;
 import com.cibertec.projectefsrt.entities.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,5 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Integer> {
     Optional<Pelicula> findTopByOrderByCodPeliculaDesc();
 
     List<Pelicula> findByEstadoPel(Integer estado);
+
 }

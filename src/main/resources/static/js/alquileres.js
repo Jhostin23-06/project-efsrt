@@ -145,7 +145,8 @@ editarAlquilerModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const alquilerId = button.getAttribute('data-id');
 
-    fetch(`/alquileres/${alquilerId}`)
+
+    fetch(`/alquileres/${alquilerId}` )
         .then(response => response.text())
         .then(text => {
             console.log("Response text: ", text);
@@ -154,6 +155,7 @@ editarAlquilerModal.addEventListener('show.bs.modal', function (event) {
             document.getElementById('editarCodigo').value = alquiler.codAlquiler;
             document.getElementById('editarPrestamo').value = alquiler.fechaPrest;
             document.getElementById('editarDevolucion').value = alquiler.fechaDev;
+
 
             console.log(alquiler);  // Verifica qué valores tienen los campos idEmpleado y idCliente
 

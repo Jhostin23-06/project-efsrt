@@ -1,5 +1,6 @@
 package com.cibertec.projectefsrt.services;
 
+import com.cibertec.projectefsrt.entities.Genero;
 import com.cibertec.projectefsrt.entities.Pelicula;
 import com.cibertec.projectefsrt.repositories.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
