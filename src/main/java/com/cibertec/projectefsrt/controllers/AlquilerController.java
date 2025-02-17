@@ -25,6 +25,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/alquileres")
@@ -62,6 +63,19 @@ public class AlquilerController {
                 return value != null ? value.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) : "";
             }
         });
+    }
+
+    @GetMapping("reportes")
+    public String reportes(Model model) {
+        List<Alquiler> alquileres = alquilerService.findAll();
+
+        // Contar la cantidad de alquileres por película
+        Map<String, Long> alquileresPorPelicula = alquileres.stream()
+                .collect(Collectors.groupingBy(a -> a.getIdPelicula().getNomPelicula(), Collectors.counting()));
+
+        model.addAttribute("alquileresPorPelicula", alquileresPorPelicula);
+
+        return "reportes";
     }
 
     @GetMapping("/generarCodigo")

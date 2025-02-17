@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #000000; /* Black */
+    --secondary-color: #fbfbfb; /* Soft white */
+    --accent-color: #f8e1e7; /* Pale pink */
+    --text-color: #2c2c2c; /* Dark gray */
+    --hover-color: #e0dcdc; /* Light gray for hover */
+    --border-color: #cccccc; /* Light gray for borders */
+    --highlight-color: #333333; /* Light green for highlights */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--secondary-color) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.dropdown-item {
+    color: var(--text-color) !important;
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--primary-color) !important;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 0.3rem 0;
+    margin-top: auto;
+}
+
+.btn-primary {
+    background-color: lightskyblue;
+    color: black;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5ac3fd;
+    color: var(--primary-color);
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    border-color: #ff0000;
+}
+
+.btn-danger:hover {
+    background-color: #cc0000;
+    border-color: #990000;
+}
+
+.table {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.table td {
+    border: 1px solid var(--border-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--hover-color);
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.modal-footer {
+    background-color: var(--hover-color);
+}
+
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.btn-close {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--secondary-color);
+}
+
+.btn-close:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* Additional styles for differentiation */
+h1 {
+    color: var(--highlight-color);
+    text-shadow: 1px 1.5px 2.5px var(--primary-color);
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.modal-content {
+    border: 2px solid var(--highlight-color);
+}
+
+#alquilerChart {
+    /* estilos para centrar */
+    margin: auto;
+    width: 30%;
+}

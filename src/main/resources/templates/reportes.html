@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Alquileres</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="icon" href="/img/icon-principal.ico">
+    <link rel="stylesheet" href="/css/reportes.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<h2 class="text-center mt-4">Reporte de Alquileres</h2>
+
+
+<canvas id="alquilerChart"></canvas>
+
+<div class="text-center mt-4">
+
+  <span class="badge bg-primary w-25">Si deseas descargar el reporte en pdf puedes hacerlo <a th:href="@{/reportes/alquileres}" class="text-white">
+    aquí <i class="fas fa-file-pdf"></i>
+  </a> </span>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+
+<script th:inline="javascript">
+  var ctx = document.getElementById('alquilerChart').getContext('2d');
+  var dataLabels = /*[[${alquileresPorPelicula.keySet()}]]*/ [];
+  var dataValues = /*[[${alquileresPorPelicula.values()}]]*/ [];
+
+  console.log("Etiquetas:", dataLabels);
+  console.log("Valores:", dataValues);
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: dataLabels,
+      datasets: [{
+        label: 'Cantidad de alquileres',
+        data: dataValues,
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
