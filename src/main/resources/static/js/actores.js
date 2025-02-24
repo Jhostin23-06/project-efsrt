@@ -40,7 +40,7 @@ function editarActor(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Actor editado correctamente.',
-                timer: 2000, // 5 segundos
+                timer: 1500, // 1.5 segundos
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/actores'; // Redirige después de mostrar la alerta
@@ -106,13 +106,7 @@ function validarFormularioEditar() {
         });
         return false;
     }
-
-    Swal.fire({
-        icon: 'success',
-        title: 'Éxito',
-        text: 'Cliente editado correctamente.',
-    });
-
+	
     return true;
 }
 
@@ -141,7 +135,7 @@ function registrarActor(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Cliente registrado correctamente.',
-                timer: 2000, // 5 segundos
+                timer: 1500, // 1.5 segundos
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/actores'; // Redirige después de mostrar la alerta

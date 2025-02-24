@@ -37,7 +37,7 @@ function registrarEmpleado(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Empleado registrado correctamente.',
-                timer: 2000, // 5 segundos
+                timer: 1500, // 5 segundos
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/empleados'; // Redirige después de mostrar la alerta
@@ -77,7 +77,7 @@ function editarEmpleado(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Empleado editado correctamente.',
-                timer: 2000,
+                timer: 1500,
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/empleados';

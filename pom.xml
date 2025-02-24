@@ -32,6 +32,25 @@
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+        <!--  https://mvnrepository.com/artifact/com.itextpdf/itextpdf  -->
+		<!--  https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports  -->
+		<!--  Dependencias de Apache POI  -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.2.3</version>
+			<!--  Última versión recomendada  -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.20.1</version>
+		</dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>

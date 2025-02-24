@@ -8,20 +8,21 @@ import com.cibertec.projectefsrt.services.AlquilerService;
 import com.cibertec.projectefsrt.services.ClienteService;
 import com.cibertec.projectefsrt.services.EmpleadoService;
 import com.cibertec.projectefsrt.services.PeliculaService;
+
+import net.sf.jasperreports.engine.JRException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.beans.PropertyEditorSupport;
-import java.time.Instant;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
@@ -217,4 +218,28 @@ public class AlquilerController {
         }
         return ResponseEntity.notFound().build();
     }
+    
+// --------------------------------------------------------------------------------------------------
+    
+    // Reportes
+    @GetMapping("/export-pdf")
+    public ResponseEntity<byte[]> exportPdf() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("efsrt", "alquilerReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(alquilerService.exportPdf());
+    }
+    
+    @GetMapping("/export-xls")
+    public ResponseEntity<byte[]> exportXls() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        var contentDisposition = ContentDisposition.builder("attachment")
+                .filename("alquilerReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(alquilerService.exportXls());
+    }
+
 }

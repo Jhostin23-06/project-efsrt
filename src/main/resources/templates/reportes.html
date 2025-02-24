@@ -20,7 +20,11 @@
 
 <div class="text-center mt-4">
 
-  <span class="badge bg-primary w-25">Si deseas descargar el reporte en pdf puedes hacerlo <a th:href="@{/reportes/alquileres}" class="text-white">
+  <span class="badge bg-danger w-15">Si deseas descargar el reporte en pdf puedes hacerlo <a th:href="@{/alquileres/export-pdf}" class="text-white">
+    aquí <i class="fas fa-file-pdf"></i>
+  </a> </span>
+  
+  <span class="badge bg-success w-15">Si deseas descargar el reporte en excel puedes hacerlo <a th:href="@{/alquileres/export-xls}" class="text-white">
     aquí <i class="fas fa-file-pdf"></i>
   </a> </span>
 

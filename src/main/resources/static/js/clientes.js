@@ -41,7 +41,7 @@ function registrarCliente(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Cliente registrado correctamente.',
-                timer: 2000, // 5 segundos
+                timer: 1500, // 5 segundos
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/clientes'; // Redirige después de mostrar la alerta
@@ -85,7 +85,7 @@ function editarCliente(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Cliente editado correctamente.',
-                timer: 2000, // 5 segundos
+                timer: 1500, // 5 segundos
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/clientes'; // Redirige después de mostrar la alerta
@@ -218,12 +218,6 @@ function validarFormularioEditar() {
         });
         return false;
     }
-
-    Swal.fire({
-        icon: 'success',
-        title: 'Éxito',
-        text: 'Cliente editado correctamente.',
-    });
 
     return true;
 }

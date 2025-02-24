@@ -37,7 +37,7 @@ function registrarPelicula(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Película registrada correctamente.',
-                timer: 2000, // 2 seconds
+                timer: 1500, // 1.5 seconds
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/peliculas'; // Redirect after alert
@@ -76,7 +76,7 @@ function editarPelicula(event) {
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Película editada correctamente.',
-                timer: 2000, // 2 seconds
+                timer: 1500, // 1.5 seconds
                 timerProgressBar: true
             }).then(() => {
                 window.location.href = '/peliculas'; // Redirect after alert
