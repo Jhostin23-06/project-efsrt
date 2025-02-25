@@ -16,11 +16,16 @@
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
+<!-- Modo oscuro/claro toggle -->
+<div class="text-end mb-3 m-4">
+    <button id="theme-toggle" class="btn btn-outline-dark">🌙 Modo Oscuro</button>
+</div>
+
 <!-- Hero Section -->
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1 class="display-4">Bienvenido a Estudios Torbellino</h1>
+            <h1 class="display-4">Bienvenido <span th:text="${nombreUsuario}"></span></h1>
             <p class="lead" id="typewriter-text">Administra y mantén actualizada la información de nuestros clientes y empleados de manera eficiente.
             <span class="new-line">Además de gestionar las películas y actores.</span> </p>
             <a th:href="@{/clientes}" class="btn btn-primary btn-lg">Gestionar Clientes</a>
@@ -30,29 +35,45 @@
 </div>
 
 <!-- Features Section -->
-<div class="container mt-5 d-flex justify-content-center align-items-center">
-    <div class="row">
-        <div class="col-md-4 text-center">
-            <img src="/img/customers.webp" alt="Clientes" class="img-fluid mb-3 w-25">
-            <h3>Clientes</h3>
-            <p>Accede a la lista completa de clientes y realiza búsquedas rápidas.</p>
-            <a th:href="@{/clientes}" class="btn btn-outline-primary">Ver Clientes</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Clientes -->
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 text-center p-4">
+                <img src="/img/customers.webp" alt="Clientes" class="card-img-top mx-auto mt-3" style="width: 80px;">
+                <div class="card-body">
+                    <h4 class="card-title">Clientes</h4>
+                    <p class="card-text">Accede a la lista completa de clientes y realiza búsquedas rápidas.</p>
+                    <a th:href="@{/clientes}" class="btn btn-primary w-100">Ver Clientes</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4 text-center">
-            <img src="/img/employees.webp" alt="Empleados" class="img-fluid mb-3 w-25">
-            <h3>Empleados</h3>
-            <p>Gestiona la información de los empleados de la tienda.</p>
-            <a th:href="@{/empleados}" class="btn btn-outline-secondary">Ver Empleados</a>
+        
+        <!-- Empleados -->
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 text-center p-4">
+                <img src="/img/employees.webp" alt="Empleados" class="card-img-top mx-auto mt-3" style="width: 80px;">
+                <div class="card-body">
+                    <h4 class="card-title">Empleados</h4>
+                    <p class="card-text">Gestiona la información de los empleados de la tienda.</p>
+                    <a th:href="@{/empleados}" class="btn btn-secondary w-100">Ver Empleados</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4 text-center">
-            <img src="/img/reports.webp" alt="Reportes" class="img-fluid mb-3 w-25">
-            <h3>Reportes</h3>
-            <p>Genera reportes detallados sobre las actividades de la tienda.</p>
-            <a th:href="@{/alquileres/reportes}" class="btn btn-outline-success">Ver Reportes</a>
+        
+        <!-- Reportes -->
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 text-center p-4">
+                <img src="/img/reports.webp" alt="Reportes" class="card-img-top mx-auto mt-3" style="width: 80px;">
+                <div class="card-body">
+                    <h4 class="card-title">Reportes</h4>
+                    <p class="card-text">Genera reportes detallados sobre las actividades de la tienda.</p>
+                    <a th:href="@{/alquileres/reportes}" class="btn btn-success w-100">Ver Reportes</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <script src="/js/script.js"></script>

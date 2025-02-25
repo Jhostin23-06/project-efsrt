@@ -1,53 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Estudios Torbellino</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" th:fragment="navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold" th:href="@{/}">🎬 Estudios Torbellino</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="mantenimientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="mantenimientosDropdown" role="button">
                         Mantenimientos
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="mantenimientosDropdown">
+                    <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/clientes}">Clientes</a></li>
                         <li><a class="dropdown-item" th:href="@{/empleados}">Empleados</a></li>
-                        <li><a class="dropdown-item" th:href="@{/peliculas}">Peliculas</a></li>
+                        <li><a class="dropdown-item" th:href="@{/peliculas}">Películas</a></li>
                         <li><a class="dropdown-item" th:href="@{/actores}">Actores</a></li>
                     </ul>
                 </li>
+                
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  id="consultasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="consultasDropdown" role="button">
                         Consultas
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="consultasDropdown">
-                        <li>
-                            <!-- Enlace a la vista de consultar películas por género -->
-                            <a class="dropdown-item" th:href="@{/peliculas/peliculasPorGenero}" style="text-decoration: none; color: black;">
-                                Consultar películas por género
-                            </a>
-                        </li>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/peliculas/peliculasPorGenero}">Películas por género</a></li>
                     </ul>
                 </li>
+                
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reportesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="reportesDropdown" role="button">
                         Reportes
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="reportesDropdown">
+                    <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/alquileres/reportes}">Reporte Alquileres</a></li>
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="alquilerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="alquilerDropdown" role="button">
                         Alquiler
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="alquilerDropdown">
+                    <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/alquileres}">Registrar Alquiler</a></li>
                     </ul>
                 </li>
             </ul>
-            <a th:href="@{/logout}" class="btn btn-danger">Cerrar Sesión</a>
+
+            <a th:href="@{/logout}" class="btn btn-outline-danger">Cerrar Sesión</a>
         </div>
     </div>
 </nav>

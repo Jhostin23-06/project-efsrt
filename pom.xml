@@ -34,7 +34,20 @@
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
         <!--  https://mvnrepository.com/artifact/com.itextpdf/itextpdf  -->
 		<!--  https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports  -->
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		</dependency>
 		<!--  Dependencias de Apache POI  -->
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-security</artifactId>
+    	</dependency>
+	    <dependency>
+	        <groupId>com.h2database</groupId>
+	        <artifactId>h2</artifactId>
+	        <scope>runtime</scope>
+	    </dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
