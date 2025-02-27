@@ -33,14 +33,19 @@ public class ReportGenerator {
         return byteArray.toByteArray();
     }
 
-    private JasperPrint getReport(List<AlquilerDTO> list) throws FileNotFoundException, JRException {
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("alquilerData", new JRBeanCollectionDataSource(list));
-
-        JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
-                ResourceUtils.getFile("classpath:efsrt.jrxml")
-                        .getAbsolutePath()), params, new JREmptyDataSource());
-
-        return report;
-    }
+    private JasperPrint getReport(List<AlquilerDTO> list) throws JRException, IOException {
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("alquilerData", new JRBeanCollectionDataSource(list));
+	
+	    // Cargar el archivo JRXML como flujo de entrada (InputStream)
+	    InputStream reportStream = getClass().getResourceAsStream("/efsrt.jrxml");
+	    if (reportStream == null) {
+	        throw new FileNotFoundException("No se encontró el archivo efsrt.jrxml en classpath.");
+	    }
+	
+	    JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
+	    JasperPrint report = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
+	
+	    return report;
+     }
 }
