@@ -35,14 +35,14 @@ public class ReportGenerator {
         return byteArray.toByteArray();
     }
 
-    private JasperPrint getReport(List<AlquilerDTO> list) throws JRException, IOException {
+    private JasperPrint getReport(List<AlquilerDTO> list) throws JRException {
 	    Map<String, Object> params = new HashMap<>();
 	    params.put("alquilerData", new JRBeanCollectionDataSource(list));
 	
-	    // Cargar el archivo JRXML como flujo de entrada (InputStream)
 	    InputStream reportStream = getClass().getResourceAsStream("/efsrt.jrxml");
+	    
 	    if (reportStream == null) {
-	        throw new FileNotFoundException("No se encontró el archivo efsrt.jrxml en classpath.");
+	        throw new RuntimeException("No se encontró el archivo efsrt.jrxml en classpath.");
 	    }
 	
 	    JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
